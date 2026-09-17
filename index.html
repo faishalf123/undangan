@@ -164,6 +164,34 @@
     .wish-badge { font-size: 0.65rem; padding: 3px 8px; border-radius: 10px; background: rgba(197, 160, 89, 0.15); color: var(--text-light); }
     .wish-message { font-size: 0.85rem; color: var(--text-light); line-height: 1.5; word-break: break-word; }
 
+    /* EFEK DAUN GUGUR */
+    .leaf-container {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none; z-index: 998; overflow: hidden;
+    }
+    .leaf {
+      position: absolute; top: -10%; width: 25px; height: 25px;
+      background: url('https://cdn-icons-png.flaticon.com/512/3176/3176346.png') no-repeat center/contain;
+      opacity: 0.7; animation: fall linear infinite;
+    }
+    @keyframes fall {
+      0% { transform: translateY(0) rotate(0deg); opacity: 0.8; }
+      100% { transform: translateY(110vh) rotate(360deg); opacity: 0.2; }
+    }
+
+    /* TOMBOL KONTROL MUSIK FLOATING */
+    .music-control {
+      position: fixed; bottom: 20px; right: 20px; z-index: 1000;
+      background: var(--bg-dark-card); border: 1px solid var(--accent-gold);
+      color: var(--accent-gold); width: 45px; height: 45px; border-radius: 50%;
+      display: flex; justify-content: center; align-items: center; cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3); transition: transform 0.3s;
+    }
+    .music-control:hover { transform: scale(1.1); }
+    .music-control.paused span { animation-play-state: paused; }
+    @keyframes spin { 100% { transform: rotate(360deg); } }
+    .music-control span { font-size: 1.2rem; display: inline-block; animation: spin 4s linear infinite; }
+
     @media (max-width: 768px) {
       .events-grid, .couple-wrapper { flex-direction: column; gap: 15px; }
       .event-card { padding: 15px; }
@@ -173,6 +201,20 @@
 </head>
 
 <body class="lock-scroll">
+
+  <!-- ELEMEN AUDIO -->
+  <audio id="bgMusic" loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
+    Browsermu tidak mendukung elemen audio.
+  </audio>
+
+  <!-- CONTAINER EFEK DAUN GUGUR -->
+  <div class="leaf-container" id="leafContainer"></div>
+
+  <!-- TOMBOL KONTROL MUSIK FLOATING -->
+  <div class="music-control" id="musicBtn" onclick="toggleMusic()" style="display: none;">
+    <span id="musicIcon">🎵</span>
+  </div>
 
   <!-- COVER -->
   <div id="cover">
@@ -343,10 +385,60 @@
     }
     window.addEventListener('DOMContentLoaded', getGuestName);
 
+    // --- FITUR MUSIK & EFEK DAUN ---
+    const bgMusic = document.getElementById('bgMusic');
+    const musicBtn = document.getElementById('musicBtn');
+    let isPlaying = false;
+
+    function toggleMusic() {
+      if (isPlaying) {
+        bgMusic.pause();
+        musicBtn.classList.add('paused');
+        musicBtn.innerHTML = '🔇';
+      } else {
+        bgMusic.play();
+        musicBtn.classList.remove('paused');
+        musicBtn.innerHTML = '<span>🎵</span>';
+      }
+      isPlaying = !isPlaying;
+    }
+
     function openInvitation() {
       document.getElementById('cover').classList.add('hide');
       document.body.classList.remove('lock-scroll');
       loadWishes(); // Muat ucapan dari Google Sheets saat dibuka
+
+      // Nyalakan Musik dan Tampilkan Tombol Musik
+      bgMusic.play().then(() => {
+        isPlaying = true;
+        musicBtn.style.display = 'flex';
+      }).catch(err => {
+        console.log("Autoplay diblokir browser, silakan klik tombol musik manual.");
+        musicBtn.style.display = 'flex';
+        musicBtn.classList.add('paused');
+        musicBtn.innerHTML = '🔇';
+      });
+
+      // Mulai Efek Daun Gugur
+      startFallingLeaves();
+    }
+
+    // Fungsi Membuat Animasi Daun Gugur
+    function startFallingLeaves() {
+      const container = document.getElementById('leafContainer');
+      const leafCount = 15; // Jumlah daun di layar
+
+      for (let i = 0; i < leafCount; i++) {
+        const leaf = document.createElement('div');
+        leaf.className = 'leaf';
+        
+        leaf.style.left = Math.random() * 100 + 'vw';
+        leaf.style.animationDuration = (Math.random() * 5 + 5) + 's';
+        leaf.style.animationDelay = (Math.random() * 5) + 's';
+        leaf.style.transform = `scale(${Math.random() * 0.6 + 0.4})`;
+        
+        container.appendChild(leaf);
+      }
     }
 
     // Fungsi Mengirim Data ke Google Sheets
