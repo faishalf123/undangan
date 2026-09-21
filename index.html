@@ -26,10 +26,27 @@
       --font-sans: 'Montserrat', sans-serif;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body { font-family: var(--font-sans); background-color: var(--bg-dark); color: var(--text-light); text-align: center; overflow-x: hidden; }
-    body.lock-scroll { overflow: hidden; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg-dark);
+      color: var(--text-light);
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    body.lock-scroll {
+      overflow: hidden;
+    }
 
     section {
       min-height: 100vh;
@@ -42,170 +59,657 @@
       padding: 40px 20px;
     }
 
-    .container { max-width: 900px; width: 100%; margin: 0 auto; }
+    .container {
+      max-width: 900px;
+      width: 100%;
+      margin: 0 auto;
+    }
 
     .divider-star {
-      display: flex; align-items: center; justify-content: center;
-      margin: 15px 0; color: var(--accent-gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 15px 0;
+      color: var(--accent-gold);
     }
-    .divider-star::before, .divider-star::after {
-      content: ''; width: 50px; height: 1px;
-      background-color: var(--accent-gold); margin: 0 15px; opacity: 0.5;
+
+    .divider-star::before,
+    .divider-star::after {
+      content: '';
+      width: 50px;
+      height: 1px;
+      background-color: var(--accent-gold);
+      margin: 0 15px;
+      opacity: 0.5;
     }
 
     .btn-custom {
-      display: inline-flex; align-items: center; gap: 10px;
-      padding: 12px 28px; border: 1px solid var(--accent-gold);
-      background-color: transparent; color: var(--accent-gold);
-      font-family: var(--font-sans); font-size: 0.75rem; letter-spacing: 2px;
-      text-transform: uppercase; text-decoration: none; cursor: pointer;
-      transition: all 0.3s ease; margin-top: 20px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 28px;
+      border: 1px solid var(--accent-gold);
+      background-color: transparent;
+      color: var(--accent-gold);
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 20px;
     }
-    .btn-custom:hover { background-color: var(--accent-gold); color: var(--bg-dark); }
+
+    .btn-custom:hover {
+      background-color: var(--accent-gold);
+      color: var(--bg-dark);
+    }
 
     /* COVER */
     #cover {
-      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background: linear-gradient(rgba(36, 26, 20, 0.85), rgba(36, 26, 20, 0.85)), url('https://i.pinimg.com/1200x/78/c3/89/78c3897c3837696d73be2338a1138b28.jpg') center/cover no-repeat;
-      z-index: 999; display: flex; flex-direction: column; justify-content: center; align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background:
+        linear-gradient(rgba(36, 26, 20, 0.85), rgba(36, 26, 20, 0.85)),
+        url('https://i.pinimg.com/1200x/78/c3/89/78c3897c3837696d73be2338a1138b28.jpg')
+        center/cover no-repeat;
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
     }
-    #cover.hide { transform: translateY(-100%); opacity: 0; pointer-events: none; }
-    .cover-subguest { font-size: 0.75rem; letter-spacing: 4px; text-transform: uppercase; color: var(--accent-gold); margin-top: 150px; margin-bottom: 10px; }
-    .cover-guest { font-size: 0.95rem; letter-spacing: 3px; text-transform: uppercase; color: var(--text-light); font-weight: 600; margin-bottom: 50px; }
-    .cover-title { font-family: var(--font-script); font-size: 4rem; color: var(--text-light); line-height: 1.2; margin-bottom: 20px; }
+
+    #cover.hide {
+      transform: translateY(-100%);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .cover-subguest {
+      font-size: 0.75rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+      margin-top: 150px;
+      margin-bottom: 10px;
+    }
+
+    .cover-guest {
+      font-size: 0.95rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--text-light);
+      font-weight: 600;
+      margin-bottom: 50px;
+    }
+
+    .cover-title {
+      font-family: var(--font-script);
+      font-size: 4rem;
+      color: var(--text-light);
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
 
     /* HERO */
     #hero {
-      background: linear-gradient(to bottom, rgba(36, 26, 20, 0.4), var(--bg-dark)), url('https://i.pinimg.com/736x/b6/65/af/b665afa6a9e078ecdd4e6309bce05565.jpg') center/cover no-repeat;
-      justify-content: flex-end; padding-bottom: 60px;
+      background:
+        linear-gradient(to bottom, rgba(36, 26, 20, 0.4), var(--bg-dark)),
+        url('https://i.pinimg.com/736x/b6/65/af/b665afa6a9e078ecdd4e6309bce05565.jpg')
+        center/cover no-repeat;
+      justify-content: flex-end;
+      padding-bottom: 60px;
     }
-    .hero-subtitle { font-size: 0.75rem; letter-spacing: 4px; text-transform: uppercase; color: var(--accent-gold); margin-bottom: 10px; }
-    .hero-names-wrapper { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; text-align: center; }
-    .hero-title { font-family: var(--font-script); font-size: 4rem; line-height: 1.1; margin-bottom: 0; }
-    .hero-amp { font-family: var(--font-serif); font-style: italic; font-size: 2rem; color: var(--accent-gold); margin: 5px 0; }
-    .hero-date { font-size: 0.85rem; letter-spacing: 4px; color: var(--text-muted); margin-top: 30px; margin-bottom: 50px; }
+
+    .hero-subtitle {
+      font-size: 0.75rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+      margin-bottom: 10px;
+    }
+
+    .hero-names-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      text-align: center;
+    }
+
+    .hero-title {
+      font-family: var(--font-script);
+      font-size: 4rem;
+      line-height: 1.1;
+      margin-bottom: 0;
+    }
+
+    .hero-amp {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 2rem;
+      color: var(--accent-gold);
+      margin: 5px 0;
+    }
+
+    .hero-date {
+      font-size: 0.85rem;
+      letter-spacing: 4px;
+      color: var(--text-muted);
+      margin-top: 30px;
+      margin-bottom: 50px;
+    }
 
     /* QUOTE */
-    #quote { background-color: var(--bg-light); color: var(--text-dark); }
-    .ring-icon { width: 45px; height: 45px; margin: 0 auto 15px; }
-    .quote-initials { font-family: var(--font-script); font-size: 3.5rem; color: var(--text-dark); }
-    .quote-text { font-family: var(--font-serif); font-size: 1.25rem; font-style: italic; line-height: 1.8; max-width: 700px; margin: 25px auto; color: #554438; }
-    .quote-source { font-size: 0.85rem; letter-spacing: 2px; color: var(--accent-gold); font-weight: 600; }
+    #quote {
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+    }
+
+    .ring-icon {
+      width: 45px;
+      height: 45px;
+      margin: 0 auto 15px;
+    }
+
+    .quote-initials {
+      font-family: var(--font-script);
+      font-size: 3.5rem;
+      color: var(--text-dark);
+    }
+
+    .quote-text {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      font-style: italic;
+      line-height: 1.8;
+      max-width: 700px;
+      margin: 25px auto;
+      color: #554438;
+    }
+
+    .quote-source {
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      color: var(--accent-gold);
+      font-weight: 600;
+    }
 
     /* COUPLE */
-    #couple { background-color: var(--bg-dark); padding: 30px 15px 80px 15px; }
-    .couple-header-text { font-size: 0.6rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent-gold); margin-bottom: 2px; }
-    .couple-main-title { font-family: var(--font-serif); font-size: 2.2rem; margin-bottom: 5px; }
-    .couple-wrapper { display: flex; justify-content: center; align-items: center; gap: 15px; margin-top: 10px; flex-wrap: wrap; width: 100%; }
-    .couple-card { flex: 1; min-width: 220px; max-width: 280px; }
+    #couple {
+      background-color: var(--bg-dark);
+      padding: 30px 15px 80px 15px;
+    }
+
+    .couple-header-text {
+      font-size: 0.6rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+      margin-bottom: 2px;
+    }
+
+    .couple-main-title {
+      font-family: var(--font-serif);
+      font-size: 2.2rem;
+      margin-bottom: 5px;
+    }
+
+    .couple-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+
+    .couple-card {
+      flex: 1;
+      min-width: 220px;
+      max-width: 280px;
+    }
+
     .photo-frame {
-      width: 110px; height: 145px; margin: 0 auto 10px;
-      clip-path: polygon(25% 0%, 75% 0%, 100% 25%, 100% 75%, 75% 100%, 25% 100%, 0% 75%, 0% 25%);
-      border: 2px solid var(--accent-gold); padding: 3px;
+      width: 110px;
+      height: 145px;
+      margin: 0 auto 10px;
+      clip-path: polygon(
+        25% 0%,
+        75% 0%,
+        100% 25%,
+        100% 75%,
+        75% 100%,
+        25% 100%,
+        0% 75%,
+        0% 25%
+      );
+      border: 2px solid var(--accent-gold);
+      padding: 3px;
     }
+
     .photo-frame img {
-      width: 100%; height: 100%; object-fit: cover;
-      clip-path: polygon(25% 0%, 75% 0%, 100% 25%, 100% 75%, 75% 100%, 25% 100%, 0% 75%, 0% 25%);
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      clip-path: polygon(
+        25% 0%,
+        75% 0%,
+        100% 25%,
+        100% 75%,
+        75% 100%,
+        25% 100%,
+        0% 75%,
+        0% 25%
+      );
     }
-    .couple-name-script { font-family: var(--font-script); font-size: 2rem; color: var(--text-light); }
-    .couple-full-name { font-family: var(--font-serif); font-size: 0.95rem; color: var(--accent-gold); margin: 2px 0 4px; }
-    .couple-parents { font-size: 0.65rem; color: var(--text-muted); line-height: 1.4; margin-bottom: 0; }
-    .couple-ampersand { font-family: var(--font-script); font-size: 2.2rem; color: var(--accent-gold); margin: -10px 0; }
+
+    .couple-name-script {
+      font-family: var(--font-script);
+      font-size: 2rem;
+      color: var(--text-light);
+    }
+
+    .couple-full-name {
+      font-family: var(--font-serif);
+      font-size: 0.95rem;
+      color: var(--accent-gold);
+      margin: 2px 0 4px;
+    }
+
+    .couple-parents {
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+      margin-bottom: 0;
+    }
+
+    .couple-ampersand {
+      font-family: var(--font-script);
+      font-size: 2.2rem;
+      color: var(--accent-gold);
+      margin: -10px 0;
+    }
 
     /* COUNTDOWN */
-    #countdown { background-color: var(--bg-light); color: var(--text-dark); }
-    .countdown-title { font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; color: var(--accent-gold); margin-bottom: 10px; }
-    .countdown-date-script { font-family: var(--font-script); font-size: 3.5rem; margin-bottom: 30px; }
-    .timer-wrapper { display: flex; justify-content: center; gap: 15px; max-width: 500px; margin: 0 auto; }
-    .timer-box { background: transparent; border: 1px solid rgba(197, 160, 89, 0.4); border-radius: 6px; padding: 15px 10px; flex: 1; }
-    .timer-number { font-family: var(--font-serif); font-size: 2rem; color: var(--accent-gold); font-weight: 600; }
-    .timer-label { font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; color: var(--text-dark); margin-top: 5px; }
+    #countdown {
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+    }
+
+    .countdown-title {
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+      margin-bottom: 10px;
+    }
+
+    .countdown-date-script {
+      font-family: var(--font-script);
+      font-size: 3.5rem;
+      margin-bottom: 30px;
+    }
+
+    .timer-wrapper {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .timer-box {
+      background: transparent;
+      border: 1px solid rgba(197, 160, 89, 0.4);
+      border-radius: 6px;
+      padding: 15px 10px;
+      flex: 1;
+    }
+
+    .timer-number {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      color: var(--accent-gold);
+      font-weight: 600;
+    }
+
+    .timer-label {
+      font-size: 0.65rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-dark);
+      margin-top: 5px;
+    }
 
     /* EVENTS */
-    #events { background-color: #f3ede2; color: var(--text-dark); }
-    .events-subtitle { font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; color: var(--accent-gold); margin-bottom: 5px; }
-    .events-title { font-family: var(--font-script); font-size: 3rem; margin-bottom: 20px; }
-    .events-grid { display: flex; gap: 20px; justify-content: center; }
-    .event-card { background-color: var(--bg-light-card); border-radius: 4px; padding: 25px 20px; flex: 1; box-shadow: 0 5px 20px rgba(0,0,0,0.03); }
-    .event-icon { font-size: 1.8rem; margin-bottom: 10px; }
-    .event-type-label { font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; color: var(--accent-gold); }
-    .event-type-name { font-family: var(--font-script); font-size: 2.2rem; margin: 5px 0 10px; }
-    .event-details { font-size: 0.8rem; color: #665548; line-height: 1.6; }
-	.roblox-link { color: var(--accent-gold); text-decoration: none; font-weight: 600; transition: all 0.3s ease; }
-	.roblox-link:hover { color: var(--text-gold); text-decoration: underline; }
-	.roblox-link:active { opacity: 0.7; }
-	.roblox-link { display: inline-block; padding: 8px 16px; border: 1px solid var(--accent-gold); border-radius: 6px; color: var(--accent-gold); text-decoration: none; font-weight: 600; background: rgba(197, 160, 89, 0.08); transition: all 0.3s ease; }
-	.roblox-link:hover { background: var(--accent-gold); color: var(--bg-dark); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(197, 160, 89, 0.25); }
+    #events {
+      background-color: #f3ede2;
+      color: var(--text-dark);
+    }
+
+    .events-subtitle {
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+      margin-bottom: 5px;
+    }
+
+    .events-title {
+      font-family: var(--font-script);
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    .events-grid {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .event-card {
+      background-color: var(--bg-light-card);
+      border-radius: 4px;
+      padding: 25px 20px;
+      flex: 1;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+    }
+
+    .event-icon {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+
+    .event-type-label {
+      font-size: 0.65rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+    }
+
+    .event-type-name {
+      font-family: var(--font-script);
+      font-size: 2.2rem;
+      margin: 5px 0 10px;
+    }
+
+    .event-details {
+      font-size: 0.8rem;
+      color: #665548;
+      line-height: 1.6;
+    }
+
+    /* ROBLOX VIRTUAL VENUE */
+    .roblox-link {
+      display: inline-block;
+      padding: 8px 16px;
+      border: 1px solid var(--accent-gold);
+      border-radius: 6px;
+      color: var(--accent-gold);
+      text-decoration: none;
+      font-weight: 600;
+      background: rgba(197, 160, 89, 0.08);
+      transition: all 0.3s ease;
+    }
+
+    .roblox-link:hover {
+      background: var(--accent-gold);
+      color: var(--bg-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(197, 160, 89, 0.25);
+    }
+
+    .roblox-link:active {
+      opacity: 0.7;
+    }
 
     /* RSVP */
-    #rsvp { background-color: var(--bg-dark); }
-    .rsvp-subtitle { font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; color: var(--accent-gold); margin-bottom: 5px; }
-    .rsvp-title, .wishes-title { font-family: var(--font-sans); font-size: 3rem; }
-    .rsvp-form { max-width: 500px; margin: 20px auto 0; text-align: left; }
-    .form-group { margin-bottom: 15px; }
-    .form-group label { display: block; font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 6px; }
-    .form-control {
-      width: 100%; background-color: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(197, 160, 89, 0.3); padding: 10px 12px;
-      color: var(--text-light); font-family: var(--font-sans); font-size: 0.85rem; border-radius: 4px; outline: none;
+    #rsvp {
+      background-color: var(--bg-dark);
     }
-    select.form-control option { background-color: var(--bg-dark); color: var(--text-light); }
-    textarea.form-control { resize: vertical; min-height: 80px; }
-    .btn-submit { width: 100%; justify-content: center; margin-top: 5px; }
+
+    .rsvp-subtitle {
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+      margin-bottom: 5px;
+    }
+
+    .rsvp-title,
+    .wishes-title {
+      font-family: var(--font-sans);
+      font-size: 3rem;
+    }
+
+    .rsvp-form {
+      max-width: 500px;
+      margin: 20px auto 0;
+      text-align: left;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .form-control {
+      width: 100%;
+      background-color: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(197, 160, 89, 0.3);
+      padding: 10px 12px;
+      color: var(--text-light);
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      border-radius: 4px;
+      outline: none;
+    }
+
+    select.form-control option {
+      background-color: var(--bg-dark);
+      color: var(--text-light);
+    }
+
+    textarea.form-control {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    .btn-submit {
+      width: 100%;
+      justify-content: center;
+      margin-top: 5px;
+    }
 
     /* WISHES */
-    #wishes { background-color: #1c130e; }
-    .wishes-subtitle { font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; color: var(--accent-gold); margin-bottom: 5px; }
-    .wishes-container {
-      max-width: 600px; width: 100%; height: 380px; overflow-y: auto;
-      margin: 0 auto; display: flex; flex-direction: column; gap: 15px; padding-right: 5px; text-align: left;
+    #wishes {
+      background-color: #1c130e;
     }
-    .wishes-container::-webkit-scrollbar { width: 5px; }
-    .wishes-container::-webkit-scrollbar-thumb { background: var(--accent-gold); border-radius: 4px; }
-    .wish-card { background-color: rgba(255, 255, 255, 0.04); border: 1px solid rgba(197, 160, 89, 0.2); border-radius: 6px; padding: 15px 18px; }
-    .wish-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
-    .wish-name { font-weight: 600; font-size: 0.9rem; color: var(--accent-gold); }
-    .wish-badge { font-size: 0.65rem; padding: 3px 8px; border-radius: 10px; background: rgba(197, 160, 89, 0.15); color: var(--text-light); }
-    .wish-message { font-size: 0.85rem; color: var(--text-light); line-height: 1.5; word-break: break-word; }
+
+    .wishes-subtitle {
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+      margin-bottom: 5px;
+    }
+
+    .wishes-container {
+      max-width: 600px;
+      width: 100%;
+      height: 380px;
+      overflow-y: auto;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      padding-right: 5px;
+      text-align: left;
+    }
+
+    .wishes-container::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    .wishes-container::-webkit-scrollbar-thumb {
+      background: var(--accent-gold);
+      border-radius: 4px;
+    }
+
+    .wish-card {
+      background-color: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(197, 160, 89, 0.2);
+      border-radius: 6px;
+      padding: 15px 18px;
+    }
+
+    .wish-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .wish-name {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--accent-gold);
+    }
+
+    .wish-badge {
+      font-size: 0.65rem;
+      padding: 3px 8px;
+      border-radius: 10px;
+      background: rgba(197, 160, 89, 0.15);
+      color: var(--text-light);
+    }
+
+    .wish-message {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      line-height: 1.5;
+      word-break: break-word;
+    }
 
     /* EFEK DAUN GUGUR */
     .leaf-container {
-      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      pointer-events: none; z-index: 998; overflow: hidden;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 998;
+      overflow: hidden;
     }
+
     .leaf {
       position: absolute;
       top: -10%;
       user-select: none;
-      animation: fall linear infinite;
+
+      /* HANYA SEKALI, TIDAK LOOP */
+      animation: fall linear forwards;
+
       filter: drop-shadow(0px 2px 3px rgba(0,0,0,0.4));
     }
+
     @keyframes fall {
-      0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
-      10% { opacity: 0.8; }
-      50% { transform: translate(25px, 50vh) rotate(180deg); opacity: 0.8; }
-      90% { opacity: 0.8; }
-      100% { transform: translate(-25px, 110vh) rotate(360deg); opacity: 0; }
+      0% {
+        transform: translate(0, 0) rotate(0deg);
+        opacity: 0;
+      }
+
+      10% {
+        opacity: 0.8;
+      }
+
+      50% {
+        transform: translate(25px, 50vh) rotate(180deg);
+        opacity: 0.8;
+      }
+
+      90% {
+        opacity: 0.8;
+      }
+
+      100% {
+        transform: translate(-25px, 110vh) rotate(360deg);
+        opacity: 0;
+      }
     }
 
     /* TOMBOL KONTROL MUSIK FLOATING */
     .music-control {
-      position: fixed; bottom: 20px; right: 20px; z-index: 1000;
-      background: var(--bg-dark-card); border: 1px solid var(--accent-gold);
-      color: var(--accent-gold); width: 45px; height: 45px; border-radius: 50%;
-      display: flex; justify-content: center; align-items: center; cursor: pointer;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3); transition: transform 0.3s;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+      background: var(--bg-dark-card);
+      border: 1px solid var(--accent-gold);
+      color: var(--accent-gold);
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: transform 0.3s;
     }
-    .music-control:hover { transform: scale(1.1); }
-    .music-control.paused span { animation-play-state: paused; }
-    @keyframes spin { 100% { transform: rotate(360deg); } }
-    .music-control span { font-size: 1.2rem; display: inline-block; animation: spin 4s linear infinite; }
+
+    .music-control:hover {
+      transform: scale(1.1);
+    }
+
+    .music-control.paused span {
+      animation-play-state: paused;
+    }
+
+    @keyframes spin {
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    .music-control span {
+      font-size: 1.2rem;
+      display: inline-block;
+      animation: spin 4s linear infinite;
+    }
 
     @media (max-width: 768px) {
-      .events-grid, .couple-wrapper { flex-direction: column; gap: 15px; }
-      .event-card { padding: 15px; }
-      section { padding: 30px 15px; }
+      .events-grid,
+      .couple-wrapper {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .event-card {
+        padding: 15px;
+      }
+
+      section {
+        padding: 30px 15px;
+      }
     }
   </style>
 </head>
@@ -230,65 +734,124 @@
   <div id="cover">
     <div class="cover-subguest">Kepada Yth. Bapak/Ibu/Saudara/i</div>
     <div class="cover-guest" id="guestName">Tamu Undangan</div>
-    <div style="font-size: 0.75rem; letter-spacing: 4px; text-transform: uppercase; color: var(--accent-gold); margin-bottom: 10px;">The Wedding Of</div>
+
+    <div style="font-size: 0.75rem; letter-spacing: 4px; text-transform: uppercase; color: var(--accent-gold); margin-bottom: 10px;">
+      The Wedding Of
+    </div>
+
     <div class="cover-title">Faishal & Istri</div>
-    <div style="font-size: 0.8rem; letter-spacing: 3px; color: var(--text-muted); margin-bottom: 30px;">Sabtu, 4 Desember 2027</div>
-    <button class="btn-custom" onclick="openInvitation()">Buka Undangan</button>
+
+    <div style="font-size: 0.8rem; letter-spacing: 3px; color: var(--text-muted); margin-bottom: 30px;">
+      Sabtu, 4 Desember 2027
+    </div>
+
+    <button class="btn-custom" onclick="openInvitation()">
+      Buka Undangan
+    </button>
   </div>
 
   <!-- HERO -->
   <section id="hero">
     <div class="hero-subtitle">The Wedding Of</div>
+
     <div class="hero-names-wrapper">
       <div class="hero-title">Faishal</div>
       <div class="hero-amp">&</div>
       <div class="hero-title">Istri</div>
     </div>
+
     <div class="hero-date">04 · 12 · 2027</div>
   </section>
 
   <!-- QUOTE -->
   <section id="quote">
     <div class="container">
+
       <svg class="ring-icon" viewBox="0 0 24 24" fill="none" stroke="#c5a059" stroke-width="1.5">
         <path d="M12 8a6 6 0 1 0 0 12 6 6 0 0 0 0-12z"/>
         <path d="M12 2l2.5 3h-5L12 2z"/>
       </svg>
+
       <div class="quote-initials">F & ?</div>
+
       <div class="divider-star">✦</div>
+
       <p class="quote-text">
-        "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang..."
+        "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan
+        untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya,
+        dan Dia menjadikan di antaramu rasa kasih dan sayang..."
       </p>
+
       <div class="quote-source">— QS. Ar-Rum : 21 —</div>
+
     </div>
   </section>
 
   <!-- COUPLE -->
   <section id="couple">
     <div class="container">
-      <div class="couple-header-text">Dua manusia, satu keputusan besar, dan restu dari orang tua</div>
-      <div class="couple-main-title">FIX! Kita Nikah!</div>
+
+      <div class="couple-header-text">
+        Dua manusia, satu keputusan besar, dan restu dari orang tua
+      </div>
+
+      <div class="couple-main-title">
+        FIX! Kita Nikah!
+      </div>
+
       <div class="divider-star">✦</div>
+
       <div class="couple-wrapper">
+
         <!-- PRIA -->
         <div class="couple-card">
+
           <div class="photo-frame">
-            <img src="https://i.pinimg.com/736x/0a/d8/2c/0ad82c0a9d4df00deeed303870257dbb.jpg" alt="Faishal Fakhri">
+            <img
+              src="https://i.pinimg.com/736x/0a/d8/2c/0ad82c0a9d4df00deeed303870257dbb.jpg"
+              alt="Faishal Fakhri"
+            >
           </div>
+
           <div class="couple-name-script">Faishal</div>
-          <div class="couple-full-name">Faishal Fakhri, S.T.</div>
-          <div class="couple-parents">Putra dari<br>Bapak Darul Rochmat, S.E. (Alm) & Ibu Nuryekti Susilaningsih, S.Sos.</div>
+
+          <div class="couple-full-name">
+            Faishal Fakhri, S.T.
+          </div>
+
+          <div class="couple-parents">
+            Putra dari<br>
+            Bapak Darul Rochmat, S.E. (Alm) &
+            Ibu Nuryekti Susilaningsih, S.Sos.
+          </div>
+
         </div>
+
         <div class="couple-ampersand">&</div>
+
         <!-- WANITA -->
         <div class="couple-card">
+
           <div class="photo-frame">
-            <img src="https://i.pinimg.com/736x/0c/9b/e0/0c9be061e8becdccc0a8ed8a65ffe43f.jpg" alt="Istri">
+            <img
+              src="https://i.pinimg.com/736x/0c/9b/e0/0c9be061e8becdccc0a8ed8a65ffe43f.jpg"
+              alt="Istri"
+            >
           </div>
+
           <div class="couple-name-script">Istri</div>
-          <div class="couple-full-name">Masih Dicari</div>
-          <div class="couple-parents">Putri dari<br>Bapak [Nama Ayah] & Ibu [Nama Ibu]</div>
+
+          <div class="couple-full-name">
+            Masih Dicari
+          </div>
+
+          <div class="couple-parents">
+            Putri dari<br>
+            Bapak [Nama Ayah] & Ibu [Nama Ibu]
+          </div>
+
         </div>
+
       </div>
     </div>
   </section>
@@ -296,13 +859,37 @@
   <!-- COUNTDOWN -->
   <section id="countdown">
     <div class="container">
-      <div class="countdown-title">Menuju Hari Bahagia</div>
-      <div class="countdown-date-script">Sabtu, 4 Desember 2027</div>
+
+      <div class="countdown-title">
+        Menuju Hari Bahagia
+      </div>
+
+      <div class="countdown-date-script">
+        Sabtu, 4 Desember 2027
+      </div>
+
       <div class="timer-wrapper">
-        <div class="timer-box"><div class="timer-number" id="days">00</div><div class="timer-label">Hari</div></div>
-        <div class="timer-box"><div class="timer-number" id="hours">00</div><div class="timer-label">Jam</div></div>
-        <div class="timer-box"><div class="timer-number" id="minutes">00</div><div class="timer-label">Menit</div></div>
-        <div class="timer-box"><div class="timer-number" id="seconds">00</div><div class="timer-label">Detik</div></div>
+
+        <div class="timer-box">
+          <div class="timer-number" id="days">00</div>
+          <div class="timer-label">Hari</div>
+        </div>
+
+        <div class="timer-box">
+          <div class="timer-number" id="hours">00</div>
+          <div class="timer-label">Jam</div>
+        </div>
+
+        <div class="timer-box">
+          <div class="timer-number" id="minutes">00</div>
+          <div class="timer-label">Menit</div>
+        </div>
+
+        <div class="timer-box">
+          <div class="timer-number" id="seconds">00</div>
+          <div class="timer-label">Detik</div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -310,269 +897,682 @@
   <!-- EVENTS -->
   <section id="events">
     <div class="container">
-      <div class="events-subtitle">Rangkaian Acara</div>
-      <div class="events-title">Hari Istimewa Kami</div>
+
+      <div class="events-subtitle">
+        Rangkaian Acara
+      </div>
+
+      <div class="events-title">
+        Hari Istimewa Kami
+      </div>
+
       <div class="events-grid">
+
+        <!-- AKAD -->
         <div class="event-card">
+
           <div class="event-icon">💍</div>
-          <div class="event-type-label">Akad Nikah</div>
-          <div class="event-type-name">Akad</div>
+
+          <div class="event-type-label">
+            Akad Nikah
+          </div>
+
+          <div class="event-type-name">
+            Akad
+          </div>
+
           <div class="event-details">
+
             <p>Sabtu, 4 Desember 2027</p>
-            <p>08.00 WIB – Selesai</p><br>
+
+            <p>08.00 WIB – Selesai</p>
+
+            <br>
+
             <p>
-				<a href="https://www.roblox.com/games/12925172492/Wedding-Venue-and-Reception"
-				 target="_blank"
-				 rel="noopener noreferrer"
-				 class="roblox-link">
-					<strong>Roblox Virtual Venue</strong>
-				</a>
-			</p>
+              <a
+                href="https://www.roblox.com/games/12925172492/Wedding-Venue-and-Reception"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="roblox-link"
+              >
+                <strong>Roblox Virtual Venue</strong>
+              </a>
+            </p>
+
           </div>
         </div>
+
+        <!-- RESEPSI -->
         <div class="event-card">
+
           <div class="event-icon">📅</div>
-          <div class="event-type-label">Resepsi Pernikahan</div>
-          <div class="event-type-name">Resepsi</div>
+
+          <div class="event-type-label">
+            Resepsi Pernikahan
+          </div>
+
+          <div class="event-type-name">
+            Resepsi
+          </div>
+
           <div class="event-details">
+
             <p>Minggu, 5 Desember 2027</p>
-            <p>11.00 – 15.00 WIB</p><br>
+
+            <p>11.00 – 15.00 WIB</p>
+
+            <br>
+
             <p>
-				<a href="https://www.roblox.com/games/8789237466/Ballroom-Dance"
-				 target="_blank"
-				 rel="noopener noreferrer"
-				 class="roblox-link">
-					<strong>Roblox Virtual Venue</strong>
-				</a>
-			</p>
+              <a
+                href="https://www.roblox.com/games/8789237466/Ballroom-Dance"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="roblox-link"
+              >
+                <strong>Roblox Virtual Venue</strong>
+              </a>
+            </p>
+
           </div>
         </div>
+
       </div>
     </div>
   </section>
 
   <!-- RSVP SECTION -->
   <section id="rsvp">
+
     <div class="container">
-      <div class="rsvp-subtitle">Konfirmasi Kehadiran</div>
-      <div class="rsvp-title">RSVP</div>
+
+      <div class="rsvp-subtitle">
+        Konfirmasi Kehadiran
+      </div>
+
+      <div class="rsvp-title">
+        RSVP
+      </div>
+
       <div class="divider-star">✦</div>
 
-      <form class="rsvp-form" id="rsvpForm" onsubmit="handleRSVP(event)">
+      <form
+        class="rsvp-form"
+        id="rsvpForm"
+        onsubmit="handleRSVP(event)"
+      >
+
         <div class="form-group">
           <label for="rsvpNama">Nama</label>
-          <input type="text" id="rsvpNama" class="form-control" placeholder="Nama lengkap Anda" required>
+
+          <input
+            type="text"
+            id="rsvpNama"
+            class="form-control"
+            placeholder="Nama lengkap Anda"
+            required
+          >
         </div>
+
         <div class="form-group">
-          <label for="kehadiran">Kehadiran</label>
-          <select id="kehadiran" class="form-control" required>
+
+          <label for="kehadiran">
+            Kehadiran
+          </label>
+
+          <select
+            id="kehadiran"
+            class="form-control"
+            required
+          >
             <option value="Hadir">Hadir</option>
             <option value="Tidak Hadir">Tidak Hadir</option>
             <option value="Masih Ragu">Masih Ragu</option>
           </select>
+
         </div>
+
         <div class="form-group">
-          <label for="ucapan">Ucapan & Doa</label>
-          <textarea id="ucapan" class="form-control" placeholder="Sampaikan doa dan ucapan terbaik Anda..." required></textarea>
+
+          <label for="ucapan">
+            Ucapan & Doa
+          </label>
+
+          <textarea
+            id="ucapan"
+            class="form-control"
+            placeholder="Sampaikan doa dan ucapan terbaik Anda..."
+            required
+          ></textarea>
+
         </div>
-        <button type="submit" id="submitBtn" class="btn-submit btn-custom">Kirim</button>
+
+        <button
+          type="submit"
+          id="submitBtn"
+          class="btn-submit btn-custom"
+        >
+          Kirim
+        </button>
+
       </form>
+
     </div>
+
   </section>
 
   <!-- WISHES SECTION -->
   <section id="wishes">
+
     <div class="container">
-      <div class="wishes-subtitle">Doa & Harapan</div>
-      <div class="wishes-title">Ucapan Tamu</div>
-      <div class="divider-star">✦</div>
-      
-      <div class="wishes-container" id="wishesContainer">
-        <div style="color: var(--text-muted); text-align: center; margin-top: 50px;">Memuat ucapan...</div>
+
+      <div class="wishes-subtitle">
+        Doa & Harapan
       </div>
+
+      <div class="wishes-title">
+        Ucapan Tamu
+      </div>
+
+      <div class="divider-star">✦</div>
+
+      <div
+        class="wishes-container"
+        id="wishesContainer"
+      >
+        <div style="color: var(--text-muted); text-align: center; margin-top: 50px;">
+          Memuat ucapan...
+        </div>
+      </div>
+
     </div>
+
   </section>
 
   <script>
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycby92wO3UADj2lzA7F8bqZwArdcjcIcKmOyvaykfYIpLxQIcgEtVv447Ttcyx4H-MEkArA/exec";
+
+    const SCRIPT_URL =
+      "https://script.google.com/macros/s/AKfycby92wO3UADj2lzA7F8bqZwArdcjcIcKmOyvaykfYIpLxQIcgEtVv447Ttcyx4H-MEkArA/exec";
+
 
     // ============================================================
     // NAMA TAMU OTOMATIS DARI URL
-    // Mendukung semua format berikut:
-    // ?to=Addecya+Farah+Azzhahro+Afan
-    // ?nama=Addecya+Farah+Azzhahro+Afan
-    // ?Addecya+Farah+Azzhahro+Afan
+    // Mendukung:
+    // ?to=Nama
+    // ?nama=Nama
+    // ?Nama+Tamu
     // ============================================================
+
     function getGuestName() {
-      const search = window.location.search.substring(1);
+
+      const search =
+        window.location.search.substring(1);
 
       if (!search) return;
 
       let guest = '';
 
-      // Format utama: ?to=Nama atau ?nama=Nama
-      const urlParams = new URLSearchParams(window.location.search);
-      guest = urlParams.get('to') || urlParams.get('nama') || '';
+      const urlParams =
+        new URLSearchParams(window.location.search);
 
-      // Jika tidak ada "to" / "nama", ambil parameter pertama
-      // sehingga URL sederhana ?Nama+Tamu juga langsung terbaca.
+      guest =
+        urlParams.get('to') ||
+        urlParams.get('nama') ||
+        '';
+
       if (!guest) {
-        const firstParam = search.split('&')[0];
-        guest = firstParam.includes('=')
-          ? firstParam.split('=').slice(1).join('=')
-          : firstParam;
+
+        const firstParam =
+          search.split('&')[0];
+
+        guest =
+          firstParam.includes('=')
+            ? firstParam.split('=').slice(1).join('=')
+            : firstParam;
       }
 
       if (guest) {
-        const decodedName = decodeURIComponent(guest.replace(/\+/g, ' ')).trim();
+
+        const decodedName =
+          decodeURIComponent(
+            guest.replace(/\+/g, ' ')
+          ).trim();
 
         if (decodedName) {
-          document.getElementById('guestName').innerText = decodedName;
-          document.getElementById('rsvpNama').value = decodedName;
+
+          document.getElementById('guestName').innerText =
+            decodedName;
+
+          document.getElementById('rsvpNama').value =
+            decodedName;
         }
       }
     }
-    window.addEventListener('DOMContentLoaded', getGuestName);
 
-    const bgMusic = document.getElementById('bgMusic');
-    const musicBtn = document.getElementById('musicBtn');
+    window.addEventListener(
+      'DOMContentLoaded',
+      getGuestName
+    );
+
+
+    // ============================================================
+    // MUSIK
+    // ============================================================
+
+    const bgMusic =
+      document.getElementById('bgMusic');
+
+    const musicBtn =
+      document.getElementById('musicBtn');
+
     let isPlaying = false;
 
+
     function toggleMusic() {
+
       if (isPlaying) {
+
         bgMusic.pause();
+
         musicBtn.classList.add('paused');
+
         musicBtn.innerHTML = '🔇';
+
+        isPlaying = false;
+
       } else {
-        bgMusic.play();
-        musicBtn.classList.remove('paused');
-        musicBtn.innerHTML = '<span>🎵</span>';
+
+        bgMusic.play()
+          .then(() => {
+
+            musicBtn.classList.remove('paused');
+
+            musicBtn.innerHTML =
+              '<span>🎵</span>';
+
+            isPlaying = true;
+
+          })
+          .catch(() => {
+
+            musicBtn.classList.add('paused');
+
+            musicBtn.innerHTML = '🔇';
+
+            isPlaying = false;
+
+          });
       }
-      isPlaying = !isPlaying;
     }
+
+
+    // ============================================================
+    // BUKA UNDANGAN
+    // ============================================================
 
     function openInvitation() {
-      document.getElementById('cover').classList.add('hide');
-      document.body.classList.remove('lock-scroll');
-      loadWishes(); 
 
-      bgMusic.play().then(() => {
-        isPlaying = true;
-        musicBtn.style.display = 'flex';
-      }).catch(err => {
-        console.log("Autoplay diblokir browser, silakan klik tombol musik manual.");
-        musicBtn.style.display = 'flex';
-        musicBtn.classList.add('paused');
-        musicBtn.innerHTML = '🔇';
-      });
+      document
+        .getElementById('cover')
+        .classList.add('hide');
 
+      document.body
+        .classList.remove('lock-scroll');
+
+      loadWishes();
+
+
+      // MULAI MUSIK
+      bgMusic.play()
+        .then(() => {
+
+          isPlaying = true;
+
+          musicBtn.style.display = 'flex';
+
+        })
+        .catch(() => {
+
+          console.log(
+            "Autoplay diblokir browser, silakan klik tombol musik manual."
+          );
+
+          musicBtn.style.display = 'flex';
+
+          musicBtn.classList.add('paused');
+
+          musicBtn.innerHTML = '🔇';
+
+          isPlaying = false;
+
+        });
+
+
+      // DAUN HANYA SEKALI
       startFallingLeaves();
+
     }
 
-    // FUNGSI DAUN GUGUR (HANYA EMOJI DAUN COKELAT 🍂)
+
+    // ============================================================
+    // DAUN GUGUR
+    // HANYA SATU KALI SETELAH BUKA UNDANGAN
+    // ============================================================
+
     function startFallingLeaves() {
-      const container = document.getElementById('leafContainer');
-      const leafCount = 20; // Jumlah daun gugur di layar
+
+      const container =
+        document.getElementById('leafContainer');
+
+      // Bersihkan daun sebelumnya
+      container.innerHTML = '';
+
+      const leafCount = 20;
+
 
       for (let i = 0; i < leafCount; i++) {
-        const leaf = document.createElement('div');
+
+        const leaf =
+          document.createElement('div');
+
         leaf.className = 'leaf';
-        leaf.innerText = '🍂'; // Khusus 1 emoji daun gugur cokelat
-        
-        leaf.style.left = Math.random() * 100 + 'vw';
-        leaf.style.animationDuration = (Math.random() * 6 + 7) + 's';
-        leaf.style.animationDelay = (Math.random() * 5) + 's';
-        leaf.style.fontSize = (Math.random() * 15 + 15) + 'px';
-        
+
+        leaf.innerText = '🍂';
+
+
+        // Posisi horizontal acak
+        leaf.style.left =
+          Math.random() * 100 + 'vw';
+
+
+        // Durasi jatuh acak
+        leaf.style.animationDuration =
+          (Math.random() * 6 + 7) + 's';
+
+
+        // Muncul secara bertahap
+        leaf.style.animationDelay =
+          (Math.random() * 3) + 's';
+
+
+        // Ukuran acak
+        leaf.style.fontSize =
+          (Math.random() * 15 + 15) + 'px';
+
+
+        // Hapus setelah selesai jatuh
+        leaf.addEventListener(
+          'animationend',
+          () => {
+            leaf.remove();
+          }
+        );
+
+
         container.appendChild(leaf);
       }
     }
 
+
+    // ============================================================
+    // RSVP
+    // ============================================================
+
     function handleRSVP(event) {
+
       event.preventDefault();
-      const btn = document.getElementById('submitBtn');
+
+      const btn =
+        document.getElementById('submitBtn');
+
       btn.innerText = "Mengirim...";
+
       btn.disabled = true;
 
+
       const data = {
-        nama: document.getElementById('rsvpNama').value,
-        kehadiran: document.getElementById('kehadiran').value,
-        ucapan: document.getElementById('ucapan').value
+
+        nama:
+          document.getElementById('rsvpNama').value,
+
+        kehadiran:
+          document.getElementById('kehadiran').value,
+
+        ucapan:
+          document.getElementById('ucapan').value
+
       };
 
-      fetch(SCRIPT_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-      })
+
+      fetch(
+        SCRIPT_URL,
+        {
+          method: 'POST',
+          mode: 'no-cors',
+
+          headers: {
+            'Content-Type': 'application/json'
+          },
+
+          body: JSON.stringify(data)
+        }
+      )
+
       .then(() => {
-        alert("Terima kasih, konfirmasi dan ucapan Anda berhasil dikirim!");
+
+        alert(
+          "Terima kasih, konfirmasi dan ucapan Anda berhasil dikirim!"
+        );
+
         document.getElementById('ucapan').value = '';
+
         btn.innerText = "Kirim";
+
         btn.disabled = false;
-        loadWishes(); 
-        document.getElementById('wishes').scrollIntoView({ behavior: 'smooth' });
+
+        loadWishes();
+
+        document
+          .getElementById('wishes')
+          .scrollIntoView({
+            behavior: 'smooth'
+          });
+
       })
+
       .catch(error => {
+
         console.error('Error:', error);
-        alert("Gagal mengirim pesan, silakan coba lagi.");
+
+        alert(
+          "Gagal mengirim pesan, silakan coba lagi."
+        );
+
         btn.innerText = "Kirim";
+
         btn.disabled = false;
+
       });
     }
 
+
+    // ============================================================
+    // LOAD UCAPAN
+    // ============================================================
+
     function loadWishes() {
-      const container = document.getElementById('wishesContainer');
-      
+
+      const container =
+        document.getElementById('wishesContainer');
+
+
       fetch(SCRIPT_URL)
+
         .then(res => res.json())
+
         .then(data => {
+
           container.innerHTML = "";
+
+
           if (data.length === 0) {
-            container.innerHTML = '<div style="color: var(--text-muted); text-align: center;">Belum ada ucapan.</div>';
+
+            container.innerHTML =
+              '<div style="color: var(--text-muted); text-align: center;">Belum ada ucapan.</div>';
+
             return;
           }
-          
+
+
           data.forEach(row => {
-            const card = document.createElement('div');
-            card.className = 'wish-card';
+
+            const card =
+              document.createElement('div');
+
+            card.className =
+              'wish-card';
+
+
             card.innerHTML = `
+
               <div class="wish-header">
-                <span class="wish-name">${escapeHtml(row.nama)}</span>
-                <span class="wish-badge">${escapeHtml(row.kehadiran)}</span>
+
+                <span class="wish-name">
+                  ${escapeHtml(row.nama)}
+                </span>
+
+                <span class="wish-badge">
+                  ${escapeHtml(row.kehadiran)}
+                </span>
+
               </div>
-              <div class="wish-message">${escapeHtml(row.ucapan)}</div>
+
+              <div class="wish-message">
+                ${escapeHtml(row.ucapan)}
+              </div>
+
             `;
+
+
             container.appendChild(card);
+
           });
+
         })
+
         .catch(err => {
-          console.error('Gagal memuat ucapan:', err);
-          container.innerHTML = '<div style="color: var(--text-muted); text-align: center;">Gagal memuat daftar ucapan.</div>';
+
+          console.error(
+            'Gagal memuat ucapan:',
+            err
+          );
+
+          container.innerHTML =
+            '<div style="color: var(--text-muted); text-align: center;">Gagal memuat daftar ucapan.</div>';
+
         });
     }
 
+
+    // ============================================================
+    // ESCAPE HTML
+    // ============================================================
+
     function escapeHtml(text) {
+
       if (!text) return '';
-      return text.toString().replace(/[&<>"']/g, function(m) {
-        return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[m];
-      });
+
+      return text
+        .toString()
+        .replace(
+          /[&<>"']/g,
+          function(m) {
+
+            return {
+              '&': '&amp;',
+              '<': '&lt;',
+              '>': '&gt;',
+              '"': '&quot;',
+              "'": '&#039;'
+            }[m];
+
+          }
+        );
     }
 
-    const targetDate = new Date('December 04, 2027 08:00:00').getTime();
+
+    // ============================================================
+    // COUNTDOWN
+    // ============================================================
+
+    const targetDate =
+      new Date(
+        'December 04, 2027 08:00:00'
+      ).getTime();
+
+
     function updateCountdown() {
-      const now = new Date().getTime();
-      const difference = targetDate - now;
+
+      const now =
+        new Date().getTime();
+
+      const difference =
+        targetDate - now;
+
+
       if (difference > 0) {
-        document.getElementById('days').innerText = String(Math.floor(difference / (1000 * 60 * 60 * 24))).padStart(2, '0');
-        document.getElementById('hours').innerText = String(Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
-        document.getElementById('minutes').innerText = String(Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
-        document.getElementById('seconds').innerText = String(Math.floor((difference % (1000 * 60)) / 1000)).padStart(2, '0');
+
+        document.getElementById('days').innerText =
+          String(
+            Math.floor(
+              difference /
+              (1000 * 60 * 60 * 24)
+            )
+          ).padStart(2, '0');
+
+
+        document.getElementById('hours').innerText =
+          String(
+            Math.floor(
+              (difference %
+                (1000 * 60 * 60 * 24)) /
+              (1000 * 60 * 60)
+            )
+          ).padStart(2, '0');
+
+
+        document.getElementById('minutes').innerText =
+          String(
+            Math.floor(
+              (difference %
+                (1000 * 60 * 60)) /
+              (1000 * 60)
+            )
+          ).padStart(2, '0');
+
+
+        document.getElementById('seconds').innerText =
+          String(
+            Math.floor(
+              (difference %
+                (1000 * 60)) /
+              1000
+            )
+          ).padStart(2, '0');
+
       }
     }
-    setInterval(updateCountdown, 1000);
+
+
+    setInterval(
+      updateCountdown,
+      1000
+    );
+
     updateCountdown();
+
   </script>
+
 </body>
 </html>
